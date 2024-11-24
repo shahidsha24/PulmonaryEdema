@@ -1,0 +1,347 @@
+{% extends "users/base.html" %}
+{% block title %} Page{% endblock title %}
+{% block content %}<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #e4e4e4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.centered-container {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #ff5722;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.card {
+    margin: 20px auto;
+    max-width: 900px;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.card img.header-image {
+    width: 300%;
+    height: 450px;
+    object-fit: cover;
+    border-bottom: 5px solid #ff5722;
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.info-section, .health-info, .covid-info, .pneumonia-info, .lung-info {
+    padding: 30px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2, .health-info h2, .covid-info h2, .pneumonia-info h2, .lung-info h2 {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+    color: #ff5722;
+}
+
+/* Paragraphs Styling */
+p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Section Headings Styling */
+p strong {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Specific Sections */
+.container p:first-of-type strong {
+    color: #4a90e2; /* Different color for the first section title */
+}
+
+
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+    .card img.header-image {
+        height: 200px;
+    }
+    .info-section, .health-info, .covid-info, .pneumonia-info, .lung-info {
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <br><br>
+    <div class="centered-container">
+        <p><a class="section-title" href="/">Back to Homepage</a></p>
+    </div>
+    <div class="card">
+        <center><img src="{{ obj.image.url }}" alt="Input Images" style="width: 300px; height: 250px;" class="header-image"></center>
+        <center><div class="card-content">
+            <p class="card-title">{{ predicted | upper }}</p>
+        </div></center>
+    </div>
+
+    {% if obj %}
+        {% if predict == "bat" %}
+            <div class="covid-info">
+                
+                <h2>Alveolar Edema with Bat Wing Pattern - Information</h2>
+    <p><strong>Description:</strong> Alveolar edema, often indicated by a 'bat wing' pattern on a chest X-ray, refers to fluid accumulation within the alveoli of the lungs. This pattern is typically symmetrical, resembling the shape of a bat's wings, and is commonly associated with severe cases of pulmonary edema, often due to heart failure or acute respiratory distress.</p>
+    
+    <p><strong>Symptoms:</strong> Symptoms of alveolar edema may include difficulty breathing (dyspnea), rapid breathing, wheezing, chest pain, fatigue, and low oxygen saturation levels. Severe cases can lead to hypoxia, bluish skin, or extreme respiratory distress.</p>
+    
+    <p><strong>Causes:</strong> Alveolar edema is most frequently caused by congestive heart failure, where the heart's reduced efficiency leads to fluid build-up in the lungs. It may also result from infections like pneumonia, inhalation of toxins, trauma, or certain kidney diseases that cause fluid overload.</p>
+    
+    <p><strong>Diagnosis:</strong> Diagnosis is typically made through imaging studies such as chest X-rays, where the 'bat wing' pattern (bilateral opacities in the central lung regions) is often observed. Additional tests include echocardiography, blood tests, and oxygen level assessments to evaluate the underlying cause and severity.</p>
+    
+    <p><strong>Prevention:</strong> Managing risk factors for heart disease, such as hypertension, high cholesterol, and obesity, can reduce the likelihood of pulmonary edema. Avoiding exposure to toxins and treating infections promptly can also help prevent fluid build-up in the lungs.</p>
+    
+    <p><strong>Precautions:</strong> Patients with known heart conditions or respiratory disorders should regularly monitor their health and seek medical care at the onset of symptoms like chest pain or difficulty breathing. Limiting fluid intake and reducing salt in the diet may also help manage the risk.</p>
+    
+    <p><strong>Body Condition:</strong> Alveolar edema can significantly impair lung function, resulting in reduced oxygen exchange and potential complications like respiratory failure. Chronic cases may lead to ongoing pulmonary hypertension and heart strain if untreated.</p>
+    
+    <p><strong>Potential Impact on Other Diseases:</strong> Alveolar edema may worsen the prognosis for patients with heart failure, kidney disease, or lung disorders. It can increase the likelihood of other complications like arrhythmias, infections, and systemic hypoxia, particularly in individuals with multiple health conditions.</p>
+    
+    <p><strong>Treatments:</strong> Treatment for alveolar edema focuses on addressing the underlying cause. In cases related to heart failure, diuretics are used to reduce fluid buildup. Oxygen therapy may be provided, and in severe cases, mechanical ventilation may be required. Other medications, such as ACE inhibitors or beta-blockers, might be prescribed to manage heart-related causes.</p>
+    
+    <p><strong>Statistics:</strong> Alveolar edema is a serious condition that can occur as a complication in a wide range of diseases. Heart-related cases are most common, affecting millions globally with varying mortality rates depending on age and underlying health conditions.</p>
+    
+    <p><strong>Resources:</strong> For more information, refer to trusted health resources like the American Heart Association (AHA), World Health Organization (WHO), and Centers for Disease Control and Prevention (CDC), which provide guidelines on managing and understanding pulmonary conditions.</p>
+    
+    <p><strong>Mental Health Considerations:</strong> Alveolar edema and its complications can be physically and mentally taxing for patients. Emotional support and counseling may help address anxiety and depression associated with severe health conditions. Regular follow-ups with healthcare providers can offer reassurance and mental health support.</p>
+            </div>
+
+        {% elif predict == "cephalization" %}
+            <div class="info-section">
+                <h2>Edema Cephalization - Information</h2>
+
+<p><strong>Description:</strong> Edema cephalization refers to the redistribution of blood flow towards the upper lobes of the lungs, visible on chest X-rays. This condition often occurs due to elevated pulmonary venous pressure, typically seen in cases of left-sided heart failure or severe pulmonary edema. The lung's upper zones appear more congested, signaling advanced pulmonary edema.</p>
+
+<p><strong>Symptoms:</strong> Symptoms associated with edema cephalization may include shortness of breath, rapid or labored breathing, chest tightness, and general fatigue. In advanced stages, patients may experience cyanosis (bluish discoloration of skin), confusion, and severe hypoxia.</p>
+
+<p><strong>Causes:</strong> Common causes of edema cephalization include congestive heart failure, chronic hypertension, and certain kidney disorders that result in fluid overload. Acute causes can include trauma, infections, or rapid shifts in fluid levels due to medical conditions or treatments, leading to pulmonary congestion.</p>
+
+<p><strong>Diagnosis:</strong> Edema cephalization is typically diagnosed through chest X-rays, where radiologists observe a distinctive pattern of vascular congestion in the upper lung lobes. Additional diagnostic methods include CT scans, echocardiography, and blood tests to determine the severity and identify the underlying causes, such as heart failure or infection.</p>
+
+<p><strong>Prevention:</strong> Prevention involves managing heart health through regular exercise, a balanced diet, and avoiding high-sodium foods. Early intervention for high blood pressure and chronic heart conditions can reduce the risk of developing pulmonary edema and associated complications.</p>
+
+<p><strong>Precautions:</strong> Patients with known heart or kidney conditions should monitor symptoms closely and seek immediate medical attention if they experience sudden breathing difficulties or chest discomfort. Restricting salt intake, staying hydrated, and following prescribed medications can help manage fluid levels effectively.</p>
+
+<p><strong>Body Condition:</strong> Edema cephalization impacts lung function by hindering oxygen exchange due to fluid accumulation, which can lead to reduced oxygen levels in the bloodstream. Long-term unmanaged cases may result in chronic pulmonary hypertension and excessive strain on the heart.</p>
+
+<p><strong>Potential Impact on Other Diseases:</strong> Edema cephalization can exacerbate other conditions, especially in patients with concurrent heart, lung, or kidney diseases. It increases the risk of systemic complications like infections, arrhythmias, and respiratory failure.</p>
+
+<p><strong>Treatments:</strong> Treatments for edema cephalization focus on resolving the underlying cause. For heart-related cases, diuretics may be administered to reduce fluid retention. Oxygen therapy and, in severe cases, mechanical ventilation may be necessary. Other treatments could include beta-blockers, ACE inhibitors, or vasodilators to support heart function and lower pulmonary pressures.</p>
+
+<p><strong>Statistics:</strong> Edema cephalization is observed in many individuals with chronic heart disease. The prevalence of such cases increases with age and is more common among those with uncontrolled hypertension, affecting millions globally and contributing to significant morbidity in these populations.</p>
+
+<p><strong>Resources:</strong> For more detailed information, consult reputable health organizations such as the American Heart Association (AHA), World Health Organization (WHO), and Centers for Disease Control and Prevention (CDC), which provide valuable guidelines on managing pulmonary and cardiovascular conditions.</p>
+
+<p><strong>Mental Health Considerations:</strong> Coping with chronic health conditions like heart failure and pulmonary edema can be mentally challenging. Emotional support, counseling, and mental health check-ins can be essential for patients dealing with anxiety and depression related to their condition. Engaging in support groups or therapy can offer comfort and motivation during recovery.</p>
+
+<p><strong>Edema Cephalization Image Detection:</strong> Detecting edema cephalization on chest X-rays can be achieved using deep learning models trained on large datasets of labeled X-ray images. Techniques such as Convolutional Neural Networks (CNNs) are highly effective for identifying patterns of vascular congestion associated with pulmonary edema. Automated detection systems can assist radiologists in identifying early signs of cephalization and providing timely interventions.</p>
+
+<p><strong>Detection and Image Analysis:</strong> AI-powered models, particularly CNN architectures, can be trained to detect edema cephalization. Training these models involves using annotated medical image datasets. Integration of such systems in healthcare could lead to early diagnosis and better management of patients with congestive heart conditions. Medical facilities should consider adopting these AI technologies for improved diagnostic capabilities.</p>
+
+<p><strong>Note:</strong> This information is provided for educational purposes. Please consult a healthcare professional for specific medical advice.</p>
+
+            </div>
+
+             {% elif predict == "cuffing" %}
+                <div class="lung-info">
+                    <div>
+                        <h2>Edema Cuffing - Information</h2>
+                        
+                        
+                        <p><strong>Description:</strong> Edema cuffing refers to the appearance of a fluid layer surrounding the bronchovascular structures within the lungs, often visible on chest imaging. This condition is commonly seen in cases of pulmonary edema and represents fluid accumulation around airways and blood vessels. It can be indicative of early pulmonary congestion and is often associated with heart failure and other conditions leading to fluid retention.</p>
+                    
+                        <p><strong>Symptoms:</strong> Patients with edema cuffing may experience symptoms similar to those of pulmonary edema, including shortness of breath, wheezing, coughing (often producing frothy sputum), fatigue, and chest discomfort. In advanced stages, symptoms may escalate to severe dyspnea and bluish skin, indicating reduced oxygen levels.</p>
+                        
+                        <p><strong>Causes:</strong> Edema cuffing is primarily caused by fluid overload conditions, such as congestive heart failure, where an inefficient heart leads to fluid back-up in the lungs. Other causes include kidney disorders that affect fluid balance, infections like pneumonia, exposure to inhaled toxins, and trauma to the lungs or chest.</p>
+                        
+                        <p><strong>Diagnosis:</strong> Edema cuffing is identified through imaging studies like chest X-rays and CT scans, which reveal fluid around the bronchovascular bundles. This pattern helps in diagnosing pulmonary edema or related lung congestion. Additional assessments, such as echocardiograms and blood tests, aid in identifying underlying causes and evaluating the severity of fluid retention.</p>
+                        
+                        <p><strong>Prevention:</strong> Preventive measures focus on managing conditions that lead to fluid accumulation. Controlling blood pressure, maintaining a healthy weight, managing diabetes, and following a low-sodium diet can reduce the risk. Patients should avoid exposure to respiratory toxins and seek prompt treatment for infections.</p>
+                        
+                        <p><strong>Precautions:</strong> People with heart or kidney disease, or a history of respiratory issues, should monitor for early symptoms of fluid retention, such as swelling in the legs or breathing difficulties. Regular check-ups and adjusting fluid and salt intake can help manage the risk of edema cuffing and prevent complications.</p>
+                        
+                        <p><strong>Body Condition:</strong> Edema cuffing can restrict airflow and impede oxygen exchange, causing decreased lung capacity. In chronic cases, prolonged fluid retention may lead to persistent respiratory issues, pulmonary hypertension, and increased strain on the heart.</p>
+                        
+                        <p><strong>Potential Impact on Other Diseases:</strong> Edema cuffing can exacerbate conditions like heart failure, kidney disease, and chronic lung conditions. It heightens the risk of complications, including infections, arrhythmias, and systemic hypoxia, especially in individuals with multiple comorbidities.</p>
+                        
+                        <p><strong>Treatments:</strong> Treatment focuses on addressing the underlying cause of fluid overload. Diuretics are commonly prescribed to reduce fluid levels. Oxygen therapy or ventilation support may be necessary for severe respiratory compromise. In cases linked to heart disease, medications like ACE inhibitors or beta-blockers may be used to support heart function and reduce fluid retention.</p>
+                        
+                        <p><strong>Statistics:</strong> Edema cuffing is a common radiographic finding in patients with heart failure and related pulmonary conditions. The prevalence is higher in older adults and individuals with chronic cardiovascular or renal diseases, with hospitalization rates and outcomes varying based on overall health and age.</p>
+                        
+                        <p><strong>Resources:</strong> For more detailed information, consult resources such as the American Heart Association (AHA), National Heart, Lung, and Blood Institute (NHLBI), and the Centers for Disease Control and Prevention (CDC), which offer guidance on pulmonary and cardiovascular health.</p>
+                        
+                        <p><strong>Mental Health Considerations:</strong> Edema cuffing and associated health complications can be mentally and physically challenging. Counseling and support groups may help patients manage anxiety and depression related to their condition. Regular follow-ups and education on lifestyle management can provide reassurance and mental health benefits.</p>
+                    </div>
+                    
+                </div>
+                    
+        
+                    {% elif predict == "effusion" %}
+                    <div class="health-info">
+                        <div class="edema-effusion-info">
+                            <h2>Edema Effusion - Information</h2>
+                        
+                            <p><strong>Description:</strong> Edema effusion is a medical condition characterized by an abnormal accumulation of fluid in body tissues, typically manifesting in the lungs as alveolar edema. This condition is commonly associated with severe pulmonary edema and can be visualized as a 'bat wing' pattern on a chest X-ray, often indicating fluid in the alveolar spaces, usually due to heart failure or respiratory distress.</p>
+                        
+                            
+                        
+                            <p><strong>Symptoms:</strong> Symptoms of edema effusion include difficulty breathing (dyspnea), rapid or shallow breathing, wheezing, chest pain, fatigue, and low blood oxygen levels. Severe cases can lead to hypoxia, cyanosis (bluish skin), and extreme respiratory distress.</p>
+                        
+                            <p><strong>Causes:</strong> The primary causes of edema effusion include congestive heart failure (CHF), infections like pneumonia, inhalation of harmful substances, trauma, and certain kidney diseases that lead to fluid overload. CHF results in fluid accumulation as the heart cannot pump efficiently, causing backflow into the lungs.</p>
+                        
+                            <p><strong>Diagnosis:</strong> Diagnosis is typically conducted through chest X-rays, where a 'bat wing' pattern (central bilateral opacities) may be observed. Additional tests, such as echocardiography, blood tests, and oxygen level assessments, help to assess the severity and pinpoint the cause.</p>
+                        
+                            <p><strong>Prevention:</strong> Preventive measures include managing risk factors for heart disease (like hypertension and high cholesterol), maintaining a healthy weight, and avoiding exposure to environmental toxins. Early treatment of infections and regular health check-ups can also reduce the risk.</p>
+                        
+                            <p><strong>Precautions:</strong> Patients with heart or respiratory conditions should regularly monitor their symptoms and seek immediate medical help if they experience chest pain, breathing difficulties, or other warning signs. Dietary measures, such as reducing salt intake and managing fluid consumption, are also recommended to reduce fluid retention.</p>
+                        
+                            <p><strong>Body Condition Impact:</strong> Edema effusion can severely impair lung function, reducing oxygen exchange in the lungs and potentially leading to respiratory failure. If left untreated, chronic pulmonary hypertension and heart strain may develop.</p>
+                        
+                            <p><strong>Potential Impact on Other Diseases:</strong> Edema effusion can worsen outcomes for patients with pre-existing heart, kidney, or lung conditions, increasing the risk of complications like arrhythmias, infections, and systemic hypoxia, particularly for those with multiple health issues.</p>
+                        
+                            <p><strong>Treatments:</strong> Treatment options focus on the underlying cause. For heart-related causes, diuretics are administered to remove excess fluid, oxygen therapy is used to assist breathing, and in severe cases, mechanical ventilation may be necessary. Medications such as ACE inhibitors or beta-blockers may be prescribed to improve heart function.</p>
+                        
+                            <p><strong>Statistics:</strong> Alveolar edema affects millions globally, often as a complication of heart disease or other severe conditions. Mortality rates vary depending on the patient's age, underlying health status, and treatment timeliness.</p>
+                        
+                            <p><strong>Resources:</strong> For further information, please consult the American Heart Association (AHA), World Health Organization (WHO), or the Centers for Disease Control and Prevention (CDC), all of which offer guidelines on pulmonary and cardiovascular health management.</p>
+                        
+                            <p><strong>Mental Health Considerations:</strong> Living with edema effusion can be challenging both physically and mentally. Patients may experience anxiety or depression related to their health. Emotional support, counseling, and regular check-ins with healthcare providers can offer reassurance and mental health support during treatment.</p>
+                        </div>
+                        
+                    </div>
+                    
+                    {% elif predict == "infiltrate" %}
+                    <div class="pneumonia-info">
+                        <h2>Edema Infiltrate - Information</h2>
+
+
+
+<p><strong>Description:</strong> Infiltrate edema, often indicated by a 'bat wing' pattern on a chest X-ray, refers to fluid accumulation within the alveoli of the lungs. This pattern is typically symmetrical, resembling the shape of a bat's wings, and is commonly associated with severe cases of pulmonary edema, often due to heart failure or acute respiratory distress.</p>
+
+<p><strong>Symptoms:</strong> Symptoms of alveolar edema may include difficulty breathing (dyspnea), rapid breathing, wheezing, chest pain, fatigue, and low oxygen saturation levels. Severe cases can lead to hypoxia, bluish skin, or extreme respiratory distress.</p>
+
+<p><strong>Causes:</strong> Alveolar edema is most frequently caused by congestive heart failure, where the heart's reduced efficiency leads to fluid build-up in the lungs. It may also result from infections like pneumonia, inhalation of toxins, trauma, or certain kidney diseases that cause fluid overload.</p>
+
+<p><strong>Diagnosis:</strong> Diagnosis is typically made through imaging studies such as chest X-rays, where the 'bat wing' pattern (bilateral opacities in the central lung regions) is often observed. Additional tests include echocardiography, blood tests, and oxygen level assessments to evaluate the underlying cause and severity.</p>
+
+<p><strong>Prevention:</strong> Managing risk factors for heart disease, such as hypertension, high cholesterol, and obesity, can reduce the likelihood of pulmonary edema. Avoiding exposure to toxins and treating infections promptly can also help prevent fluid build-up in the lungs.</p>
+
+<p><strong>Precautions:</strong> Patients with known heart conditions or respiratory disorders should regularly monitor their health and seek medical care at the onset of symptoms like chest pain or difficulty breathing. Limiting fluid intake and reducing salt in the diet may also help manage the risk.</p>
+
+<p><strong>Body Condition:</strong> Alveolar edema can significantly impair lung function, resulting in reduced oxygen exchange and potential complications like respiratory failure. Chronic cases may lead to ongoing pulmonary hypertension and heart strain if untreated.</p>
+
+<p><strong>Potential Impact on Other Diseases:</strong> Alveolar edema may worsen the prognosis for patients with heart failure, kidney disease, or lung disorders. It can increase the likelihood of other complications like arrhythmias, infections, and systemic hypoxia, particularly in individuals with multiple health conditions.</p>
+
+<p><strong>Treatments:</strong> Treatment for alveolar edema focuses on addressing the underlying cause. In cases related to heart failure, diuretics are used to reduce fluid buildup. Oxygen therapy may be provided, and in severe cases, mechanical ventilation may be required. Other medications, such as ACE inhibitors or beta-blockers, might be prescribed to manage heart-related causes.</p>
+
+<p><strong>Statistics:</strong> Alveolar edema is a serious condition that can occur as a complication in a wide range of diseases. Heart-related cases are most common, affecting millions globally with varying mortality rates depending on age and underlying health conditions.</p>
+
+<p><strong>Resources:</strong> For more information, refer to trusted health resources like the American Heart Association (AHA), World Health Organization (WHO), and Centers for Disease Control and Prevention (CDC), which provide guidelines on managing and understanding pulmonary conditions.</p>
+
+<p><strong>Mental Health Considerations:</strong> Alveolar edema and its complications can be physically and mentally taxing for patients. Emotional support and counseling may help address anxiety and depression associated with severe health conditions. Regular follow-ups with healthcare providers can offer reassurance and mental health support.</p>
+
+
+                    </div>
+
+                    {% elif predict == "kerley" %}
+                    <div class="pneumonia-info">
+                        <h2>Edema Kerley - Information</h2>
+
+
+
+<p><strong>Description:</strong> Kerley edema, often indicated by a 'bat wing' pattern on a chest X-ray, refers to fluid accumulation within the alveoli of the lungs. This pattern is typically symmetrical, resembling the shape of a bat's wings, and is commonly associated with severe cases of pulmonary edema, often due to heart failure or acute respiratory distress.</p>
+
+<p><strong>Symptoms:</strong> Symptoms of alveolar edema may include difficulty breathing (dyspnea), rapid breathing, wheezing, chest pain, fatigue, and low oxygen saturation levels. Severe cases can lead to hypoxia, bluish skin, or extreme respiratory distress.</p>
+
+<p><strong>Causes:</strong> Alveolar edema is most frequently caused by congestive heart failure, where the heart's reduced efficiency leads to fluid build-up in the lungs. It may also result from infections like pneumonia, inhalation of toxins, trauma, or certain kidney diseases that cause fluid overload.</p>
+
+<p><strong>Diagnosis:</strong> Diagnosis is typically made through imaging studies such as chest X-rays, where the 'bat wing' pattern (bilateral opacities in the central lung regions) is often observed. Additional tests include echocardiography, blood tests, and oxygen level assessments to evaluate the underlying cause and severity.</p>
+
+<p><strong>Prevention:</strong> Managing risk factors for heart disease, such as hypertension, high cholesterol, and obesity, can reduce the likelihood of pulmonary edema. Avoiding exposure to toxins and treating infections promptly can also help prevent fluid build-up in the lungs.</p>
+
+<p><strong>Precautions:</strong> Patients with known heart conditions or respiratory disorders should regularly monitor their health and seek medical care at the onset of symptoms like chest pain or difficulty breathing. Limiting fluid intake and reducing salt in the diet may also help manage the risk.</p>
+
+<p><strong>Body Condition:</strong> Alveolar edema can significantly impair lung function, resulting in reduced oxygen exchange and potential complications like respiratory failure. Chronic cases may lead to ongoing pulmonary hypertension and heart strain if untreated.</p>
+
+<p><strong>Potential Impact on Other Diseases:</strong> Alveolar edema may worsen the prognosis for patients with heart failure, kidney disease, or lung disorders. It can increase the likelihood of other complications like arrhythmias, infections, and systemic hypoxia, particularly in individuals with multiple health conditions.</p>
+
+<p><strong>Treatments:</strong> Treatment for alveolar edema focuses on addressing the underlying cause. In cases related to heart failure, diuretics are used to reduce fluid buildup. Oxygen therapy may be provided, and in severe cases, mechanical ventilation may be required. Other medications, such as ACE inhibitors or beta-blockers, might be prescribed to manage heart-related causes.</p>
+
+<p><strong>Statistics:</strong> Alveolar edema is a serious condition that can occur as a complication in a wide range of diseases. Heart-related cases are most common, affecting millions globally with varying mortality rates depending on age and underlying health conditions.</p>
+
+<p><strong>Resources:</strong> For more information, refer to trusted health resources like the American Heart Association (AHA), World Health Organization (WHO), and Centers for Disease Control and Prevention (CDC), which provide guidelines on managing and understanding pulmonary conditions.</p>
+
+<p><strong>Mental Health Considerations:</strong> Alveolar edema and its complications can be physically and mentally taxing for patients. Emotional support and counseling may help address anxiety and depression associated with severe health conditions. Regular follow-ups with healthcare providers can offer reassurance and mental health support.</p>
+
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+    
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cardTitles = document.querySelectorAll('.card-title');
+    
+    cardTitles.forEach(title => {
+        title.addEventListener('mouseover', function() {
+            title.style.color = '#3498db'; // Change color on hover
+        });
+        title.addEventListener('mouseout', function() {
+            title.style.color = '#2c3e50'; // Reset color
+        });
+    });
+});
+
+
+</script>
+</html>
+{% endblock content %}

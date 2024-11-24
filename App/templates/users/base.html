@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- fevicon -->
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        /* General Body Styling */
+body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaeaea; /* Light gray background */
+}
+
+/* Hero Section Styling */
+.hero-section {
+    background: url('https://wp-defenx-2020.s3.eu-west-2.amazonaws.com/media/2016/11/hero-bg.jpg') no-repeat center center/cover;
+    color: #fff; /* White text for hero section */
+    text-align: center;
+    padding: 5rem 3rem;
+    margin-top: 30px; /* Increased margin for better separation */
+}
+
+.hero-section .container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn {
+    background-color: #0056b3; /* Darker blue button background */
+    color: #fff; /* White button text */
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    background-color: #003d7a; /* Even darker blue on hover */
+}
+
+/* Navbar Item Hover Effect */
+.nav-item:hover {
+    background-color: #0056b3; /* Dark background on navbar item hover */
+}
+
+/* Form Content Styling */
+.form-content {
+    background-color: #ffffff; /* White background for form content */
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+    padding: 25px;
+    margin-top: 30px; /* Increased top margin */
+}
+
+.form-content .card {
+    border: none; /* No border for cards */
+}
+
+.form-content .card-header {
+    background-color: #0056b3; /* Darker blue header background */
+    color: #fff; /* White header text */
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.form-content .card-body {
+    padding: 25px;
+}
+
+.form-content .form-group label {
+    font-size: 1rem; /* Normal label text size */
+    color: #444; /* Darker label text */
+}
+
+.form-content .form-group input.form-control,
+.form-content .form-group select.form-control {
+    font-size: 1.1rem; /* Slightly larger input/select text size */
+    border-radius: 8px;
+}
+
+.form-content .form-group .btn {
+    font-size: 1.1rem; /* Slightly larger button text size */
+}
+
+.form-content .form-group .alert {
+    margin-top: 15px; /* Increased space between alerts and form */
+}
+
+.form-content .form-group .alert.alert-danger {
+    border-color: #e57373; /* Red border for danger alerts */
+}
+
+.form-content .form-group .close {
+    color: #e57373; /* Red close button text */
+}
+
+.form-content .card-footer {
+    background-color: #f1f1f1; /* Light gray footer background */
+    border-radius: 0 0 15px 15px; /* Rounded bottom corners */
+    padding: 15px;
+    text-align: center;
+}
+
+.form-content .card-footer .small a {
+    color: #0056b3; /* Darker blue link color */
+    text-decoration: none;
+}
+
+.form-content .card-footer .small a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+    </style>
+</head>
+<body>
+    <header class="header-area">
+            
+           
+        <div class="container">
+           <div class="row d_flex">
+              <div class="col-sm-3 logo_sm">
+                 <div class="logo">
+                    <a href="/"></a>
+                 </div>
+              </div>
+              <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-9">
+                 <div class="navbar-area">
+                    <nav class="site-navbar">
+                       <ul>
+                        {% if user.is_authenticated %}
+                          <li><a class="active" href="/">Home</a></li>
+                          
+                          <li><a href="{% url 'users-profile' %}">Profile</a></li>
+                          <li><a href="{% url 'Database' %}">Database</a></li>
+                         
+                          <li><a href="{% url 'Deploy_8' %}">DL Model</a></li>
+                          <li><a href="{% url 'logout_view' %}">Logout</a></li>
+                          {% else %}
+                          <li><a href="{% url 'login' %}" >Login</a></li>
+                          {% endif %}
+                           
+                          
+                       </ul>
+                       <button class="nav-toggler">
+                       <span></span>
+                       </button>
+                    </nav>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Any flash messages pop up in any page because this is the base template -->
+                {% if messages %}
+                    <div class="alert alert-dismissible" role="alert">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- A

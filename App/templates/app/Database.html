@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    color: #111;
+    font-family: 'Cambria', Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    padding: 0;
+    margin: 0;
+}
+
+/* Card Section Styling */
+.card-section {
+    margin: 20px 0 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-section > h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2em;
+    color: #2c3e50;
+}
+
+.card-section > h4 {
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* Card List Styling */
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card Styling */
+.card {
+    width: 300px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out, filter 0.6s ease-out;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    filter: grayscale(0.05) saturate(85%) brightness(90%) contrast(95%);
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: grayscale(0) saturate(100%) brightness(100%) contrast(100%);
+}
+
+/* Card Image Styling */
+.card > img {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    z-index: -1;
+    transition: transform 0.3s ease-out, filter 0.5s ease-out;
+    transform: scale(1.08);
+    filter: blur(2px) brightness(0.95);
+}
+
+.card:hover > img {
+    transform: scale(1.15);
+    filter: blur(0px);
+}
+
+/* Shine Layer for Effect */
+.card > .shineLayer {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Button Container Styling */
+.button-container {
+    position: relative;
+    text-align: right;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #19212a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #e74c3c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+</style>
+<script>
+  var cards = $('.card');
+
+  cards.each( (index, card) => {
+    $(card).prepend("<div class='shineLayer'></div>")
+  });
+  
+  $(".card").mousemove( function(event) {
+    
+    var card = this;
+    var mouseCoord = {
+      x: event.offsetX,
+      y: event.offsetY
+    };
+    
+    //cleanup
+    mouseCoord.x = mouseCoord.x < 0 ? 0 : mouseCoord.x;
+    mouseCoord.x = mouseCoord.x > $(card).width() ? $(card).width() : mouseCoord.x;
+    mouseCoord.y = mouseCoord.y < 0 ? 0 : mouseCoord.y;
+    mouseCoord.y = mouseCoord.y > $(card).height() ? $(card).height() : mouseCoord.y;
+    
+    
+    var transformCard = "scale3d(1.08, 1.08, 1.08) perspective(700px)";
+    transformCard += " ";
+    //rotateX between -9 and +9
+    transformCard += "rotateX(" + ( ( ( (mouseCoord.y / $(card).height()) * 18 ) - 9 )) + "deg)";
+    transformCard += " ";
+    //rotateY between -13 and +13
+    transformCard += "rotateY(" + ( ( ( (mouseCoord.x / $(card).width()) * 26 ) - 13 ) * -1 ) + "deg)";
+    
+    transformCard += " ";
+    //translateX between -3 and +3
+    transformCard += "translateX(" + ( ( (mouseCoord.x / $(card).width()) * 6 ) - 3 ) + "px)";
+    transformCard += " ";
+    //translateY between -5 and +5
+    transformCard += "translateY(" + ( ( (mouseCoord.y / $(card).height()) * 10 ) - 5 ) + "px)";
+    
+    $(card).css("transform", transformCard);
+    
+    //rotateX between -5 and +5
+    var transformCardImage = "rotateX(" + ( ( ( (mouseCoord.y / $(card).height()) * 10 ) - 5 ) * -1 ) + "deg)";
+    transformCardImage += " ";
+    //rotateX between -13 and +13
+    transformCardImage += "rotateY(" + ( ( ( (mouseCoord.x / $(card).width()) * 26 ) - 13 ) * -1 ) + "deg)";
+    $(card).find("img").css("transform", transformCardImage);
+    
+    //opacity of ShineLayer between 0.1 and 0.4
+    var backgroundShineLayerOpacity = ((mouseCoord.y / $(card).height()) * 0.3) + 0.1;
+    //bottom=0deg; left=90deg; top=180deg; right=270deg;
+    var backgroundShineLayerDegree = (Math.atan2(mouseCoord.y - ($(card).height()/2), mouseCoord.x - ($(card).width()/2)) * 180/Math.PI) - 90;
+    backgroundShineLayerDegree = backgroundShineLayerDegree < 0 ? backgroundShineLayerDegree += 360 : backgroundShineLayerDegree
+    var backgroundShineLayer = "linear-gradient(" + backgroundShineLayerDegree + "deg, rgba(255,255,255," + backgroundShineLayerOpacity + ") 0%, rgba(255,255,255,0) 80%)";
+    $(card).find(".shineLayer").css("background", backgroundShineLayer);
+  });
+  
+  $(".card").mouseenter( function(event) {
+    $(".card").addClass("blur");
+    $(this).removeClass("blur");
+  });
+  
+  $(".card").mouseleave( function(event) {
+    var card = this;
+    $(card).css("transform", "scale3d(1, 1, 1)");
+    $(card).find("img").css("transform", "");
+    $(card).find(".shineLayer").css("background", "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 80%)");
+  
+    $(".card").removeClass("blur");
+  });
+</script>
+<body>
+  <div class="button-container">
+		<a href="/" class="button">Back to Home</a>
+	</div>
+  <div class="card-section">
+    <h1 style="color: red;">Model Database</h1>
+    <h2>Veiw the data that are been Tested</h2>
+    {% for model in models %}
+        <div class="card-list">
+            <div class="card">
+              <img class="h-auto max-w-full rounded-lg" src="{{ model.image.url }}" alt="Image">
+              <span style="color: #fff;"><b>{{model.label}}</b></span>
+            </div>
+            {% endfor %}
+  </div>
+</body>
+</html>
